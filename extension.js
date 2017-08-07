@@ -3,27 +3,27 @@ var vscode = require('vscode');
 function activate(context) {
 
     vscode.workspace.onDidSaveTextDocument(function () {
-        console.log('trigger reload');
+        vscode.window.showInformationMessage('Triggered reload server');
     });
 
     var startServer = vscode.commands.registerCommand(
         'extension.startServer',
         function () {
-            console.log('start server');
+            vscode.window.showInformationMessage('Reload server started');
         }
     );
 
     var stopServer = vscode.commands.registerCommand(
         'extension.stopServer',
         function () {
-            console.log('stop server');
+             vscode.window.showInformationMessage('Stopped reload server');
         }
     );
 
     var restartServer = vscode.commands.registerCommand(
         'extension.restartServer',
         function () {
-            console.log('restart server');
+            vscode.window.showInformationMessage('Restarted reload server');
         }
     );
 
