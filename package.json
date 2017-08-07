@@ -11,14 +11,24 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.triggerReload"
+        "onCommand:extension.startServer",
+        "onCommand:extension.stopServer",
+        "onCommand:extension.restartServer"
     ],
     "main": "./extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.triggerReload",
-                "title": "trigger reload"
+                "command": "extension.startServer",
+                "title": "start reload server"
+            },
+            {
+                "command": "extension.stopServer",
+                "title": "stop reload server"
+            },
+            {
+                "command": "extension.restartServer",
+                "title": "restart reload server"
             }
         ]
     },
