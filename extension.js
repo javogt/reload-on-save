@@ -1,29 +1,19 @@
 var vscode = require('vscode');
-var http = require("http");
-
-function server() {
-    var server = http.createServer(function (request, response) {
-        response.writeHead(200, { "Content-Type": "application/json" });
-        response.write('{"tinylr": "Welcome","version": "0.0.5"}');
-        response.end();
-    });
-
-    server.listen(35729);
-    console.log("Server is listening");
-}
-
+var livereload = require('livereload');
+var server;
 
 
 function activate(context) {
 
     vscode.workspace.onDidSaveTextDocument(function () {
+        server.refresh('');
         vscode.window.showInformationMessage('Triggered reload server');
     });
 
     var startServer = vscode.commands.registerCommand(
         'extension.startServer',
         function () {
-            server();
+            server = livereload.createServer();
             vscode.window.showInformationMessage('Reload server started');
         }
     );
